@@ -15,8 +15,9 @@ export const shortenHex = (hex: string, length = 4) => {
 };
 
 const ETHERSCAN_PREFIXES = {
-  42161: "",
-  421611: "testnet.",
+  42161: "arbiscan",
+  421611: "testnet.arbiscan",
+  42: "kovan.etherscan",
 };
 
 export const formatArbiscanLink = (
@@ -26,11 +27,11 @@ export const formatArbiscanLink = (
   switch (type) {
     case "Account": {
       const [chainId, address] = data;
-      return `https://${ETHERSCAN_PREFIXES[chainId]}arbiscan.io/address/${address}`;
+      return `https://${ETHERSCAN_PREFIXES[chainId]}.io/address/${address}`;
     }
     case "Transaction": {
       const [chainId, hash] = data;
-      return `https://${ETHERSCAN_PREFIXES[chainId]}arbiscan.io/tx/${hash}`;
+      return `https://${ETHERSCAN_PREFIXES[chainId]}.io/tx/${hash}`;
     }
   }
 };

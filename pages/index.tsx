@@ -32,6 +32,7 @@ function Home() {
   const handleMint = useCallback(
     async (name: string, message: string) => {
       const currentFee = await nftContract.currentFee();
+      console.log(currentFee);
       await tokenContract.approve(NFT_CONTRACT_ADDRESS, currentFee);
       await nftContract.mintTransfer(account, name, message);
     },
